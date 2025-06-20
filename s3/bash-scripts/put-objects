@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+output_dir="/tmp/s3-bash-scripts"
+
+mkdir -p $output_dir
+
+num_files=$((RANDOM % 6 + 5))
