@@ -1,0 +1,9 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample S3 bucket.
+
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    #DeletionPolicy: Retain
+    #Properties:
+     # BucketName: DOC-EXAMPLE-BUCKET
