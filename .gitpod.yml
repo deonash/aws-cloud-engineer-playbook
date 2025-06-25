@@ -13,6 +13,14 @@ tasks:
       echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
       sudo apt update
       sudo apt-get install terraform
+
+  - name: jdk
+    before: |
+      sudo apt-get update && sudo apt-get install -y wget gnupg
+      wget -qO - https://repos.azul.com/azul-repo.key | sudo gpg --dearmor -o /usr/share/keyrings/azul.gpg
+      echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" | sudo tee /etc/apt/sources.list.d/zulu.list
+      sudo apt-get update
+      sudo apt-get install -y zulu24-jdk
       
   - name: utils 
     before: |
